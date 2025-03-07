@@ -16,7 +16,7 @@ pipeline {
         stage('Application Build') {
             steps {
                 echo "Perform Application Build"
-				 sh "mvn -Dmaven.test.failure.ignore=true clean package"
+				sh 'mvn clean package'
             }
         }
         stage('Build Docker Image') {
