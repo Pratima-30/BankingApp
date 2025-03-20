@@ -3,12 +3,12 @@ kind: Deployment
 metadata:
   name: bankapp-eta-deploy
   labels:
-    app: bankapp-eta-app
+    app: bankapp-eta-app:latest
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: bankapp-eta-app
+      app: bankapp-eta-app:latest
   template:
     metadata:
       labels:
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: bankapp-eta-container
-        image: pratima30/bankapp-eta-app
+        image: pratima30/bankapp-eta-app:latest
         ports:
         - containerPort: 8082
 ---
@@ -25,10 +25,10 @@ kind: Service
 metadata:
   name: bankapp-eta-np-service
   labels:
-    app: bankapp-eta-app
+    app: bankapp-eta-app:latest
 spec:
   selector:
-    app: bankapp-eta-app
+    app: bankapp-eta-app:latest
 
   type: NodePort
   ports:
